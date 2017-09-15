@@ -12,6 +12,7 @@ import java.util.Date;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -37,10 +38,43 @@ public class LonelyTwitterActivity extends Activity {
 		saveButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
+
+				tweet tweet = new ImportantTweet("");
+				NormalTweet tweet1 = new NormalTweet("Hello");
+				try{
+					tweet.setMessage("Hello");
+				}catch (TweetTooLongException e) {
+					//e.printStackTrace();
+				}
+				ArrayList<tweet> tweets = new ArrayList<tweet>();
+
+				tweets.add(tweet);
+				tweets.add(tweet1);
+				for(tweet t : tweets){
+					Log.d("some tag","is this important? " + t.isImportant());
+				}
+				ArrayList<Tweetable> tweetabls = new ArrayList<Tweetable>();
+				tweetabls.add(tweet);
+				tweetabls.add(tweet1);
+
+				//mood
+				Mood mood = new SadMood("cry");
+				HappyMood mood1 = new HappyMood("laugh");
+				ArrayList<Mood> moods = new ArrayList<Mood>();
+				moods.add(mood);
+				moods.add(mood1);
+				for(Mood t : moods){
+					Log.d("some tag","is this sad? " + t.isSad());
+				}
+
+
+
+
+
 				setResult(RESULT_OK);
 				String text = bodyText.getText().toString();
 				saveInFile(text, new Date(System.currentTimeMillis()));
-				finish();
+				//finish();
 
 			}
 		});
