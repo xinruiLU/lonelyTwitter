@@ -36,11 +36,16 @@ public abstract class tweet implements Tweetable{
         return date;
 
     }
+
     public String getMessage(){
         return message;
 
     }
     public Boolean isImportant(){
         return false;
+    }
+
+    public String toString(){
+        return date.toString() + " | "  + message;
     }
 }

@@ -2,22 +2,13 @@
 <items version="2" >
 
     <item
-        is-multidex="true"
-        jar="/Users/Al/lonelyTwitter/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/Users/Al/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.8.2/3edcfe49d2c6053a70a2a47e4e1c2f94998a49cf/gson-2.8.2.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.0"
-        sha1="71a636642af285d9d04fd2079757e6ff23411cdc">
-        <dex dex="/Users/Al/lonelyTwitter/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_a93926951d5cecfd3d07e83f1dfcadd4b68fa899/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Al/lonelyTwitter/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="/Users/Al/lonelyTwitter/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_1e1a21a2674c45871d3bebae019807867cb5fadc/classes.dex" />
+        sha1="3edcfe49d2c6053a70a2a47e4e1c2f94998a49cf">
+        <dex dex="/Users/Al/Desktop/lonelyTwitter/app/build/intermediates/pre-dexed/debug/gson-2.8.2_f509d9e82e0463b23e820e0af2aee37a83d62fb1.jar" />
     </item>
 
 </items>
