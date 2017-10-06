@@ -1,5 +1,17 @@
 package ca.ualberta.cs.lonelytwitter;
 
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -9,22 +21,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Date;
-
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.util.Log;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 
 public class LonelyTwitterActivity extends Activity {
@@ -67,6 +63,18 @@ public class LonelyTwitterActivity extends Activity {
 			public void onClick(View v) {
 				setResult(RESULT_OK);
 				tweetList.clear();
+				String text = bodyText.getText().toString();
+				ElasticsearchTweetController.GetTweetsTask getTweetsTask = new ElasticsearchTweetController.GetTweetsTask();
+				getTweetsTask.execute(text);
+
+
+				try{
+					tweetList.addAll(getTweetsTask.get());
+
+				}catch (Exception e){
+					Log.i("Error","Failed to get the tweets from the async object");
+				}
+
 				deleteFile(FILENAME);  // TODO deprecate this button
 				adapter.notifyDataSetChanged();
 			}
@@ -82,7 +90,8 @@ public class LonelyTwitterActivity extends Activity {
 		//loadFromFile(); // TODO replace this with elastic search
         ElasticsearchTweetController.GetTweetsTask getTweetsTask
                 = new ElasticsearchTweetController.GetTweetsTask();
-        getTweetsTask.execute("");
+		String text = bodyText.getText().toString();
+        getTweetsTask.execute(text);
 
         try {
             tweetList = getTweetsTask.get();

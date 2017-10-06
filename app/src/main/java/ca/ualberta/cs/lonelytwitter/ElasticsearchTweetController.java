@@ -61,13 +61,13 @@ public class ElasticsearchTweetController {
             ArrayList<NormalTweet> tweets = new ArrayList<NormalTweet>();
 
             // TODO Build the query
-            /*String query = "{\n" +
-                    "  \"query\": { \"match_all\": {} },\n" +
-                    "  \"sort\": { \"date\": { \"order\": \"desc\" } },\n" +
-                    "  \"size\": 10\n" +
-                    "}";*/
+            String query = "{\n" +
+                    "  \"query\": { \n" +
+                    "      \"term\": { \"message\": \""+search_parameters[0]+"\"}\n"+
+                    "  }\n" +
+                    "}";
 
-            Search search = new Search.Builder(search_parameters[0])
+            Search search = new Search.Builder(query)
                     .addIndex("testing")
                     .addType("tweet")
                     .build();
